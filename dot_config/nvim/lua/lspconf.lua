@@ -83,3 +83,14 @@ require('lspconfig').eslint.setup{
   flags = lsp_flags,
   capabilities = capabilities,
 }
+
+require('lspconfig').rls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  settings = {
+    rust = {
+      all_features = true,
+    },
+  },
+}
