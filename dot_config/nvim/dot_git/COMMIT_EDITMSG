@@ -1,0 +1,11 @@
+added telescope
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Changes to be committed:
+#	modified:   init.lua
+#	modified:   lua/plugins.lua
+#	new file:   lua/telescope_conf.lua
+#	modified:   plugin/packer_compiled.lua
+#

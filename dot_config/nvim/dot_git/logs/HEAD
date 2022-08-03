@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 9cf47632fa200e6df63d825fb5f7f9ad0e49aa47 gaidar <garius642@gmail.com> 1658864529 +0300	commit (initial): initial commit
+9cf47632fa200e6df63d825fb5f7f9ad0e49aa47 89eff1fcfc86f0e3af510bfce8d96512e0e5496c gaidar <garius642@gmail.com> 1658865631 +0300	commit: Refactoring, Added treesitter highlighting
+89eff1fcfc86f0e3af510bfce8d96512e0e5496c b861feb7e351adfad4b48d43084956d5ce24b676 gaidar <garius642@gmail.com> 1658869829 +0300	commit: added lsp server for js
+b861feb7e351adfad4b48d43084956d5ce24b676 5ff1ab2be8fa237783d4459f1520e1ff85e51700 gaidar <garius642@gmail.com> 1658945236 +0300	commit: added format on save and keybindings for lsp
+5ff1ab2be8fa237783d4459f1520e1ff85e51700 5629d39f2b7aa1195eac2d3d51eb0805d6d39a77 gaidar <garius642@gmail.com> 1658946812 +0300	commit: added telescope

@@ -1,0 +1,2 @@
+alias android-studio=~/android-studio/bin/studio.sh
+alias vim=nvim
