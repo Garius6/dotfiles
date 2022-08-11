@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 
 require('plugins')
-require('lspconf')
+require('lsp_conf')
 require('telescope_conf')
 require('statusline_conf')
 
@@ -14,11 +14,19 @@ require'nvim-treesitter.configs'.setup {
 
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>')
 
+vim.keymap.set('n', '<leader>tc', ':tabnew<CR>')
+vim.keymap.set('n', '<leader>tn', ':tabnext<CR>')
+vim.keymap.set('n', '<leader>tb', ':tabprevious<CR>')
+vim.keymap.set('n', '<leader>td', ':tabclose<CR>')
+vim.keymap.set('n', '<leader>tl', ':tabs<CR>')
+
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>')
+vim.keymap.set('n', '<leader>bb', ':bprevious<CR>')
+vim.keymap.set('n', '<leader>bl', ':buffers<CR>')
+
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 vim.opt.autoindent = true
-
-vim.opt.cursorline = true
 
 vim.opt.tabstop = 2
 
@@ -33,3 +41,9 @@ vim.opt.number = true
 vim.opt.autoindent = true
 
 vim.opt.smartindent = true
+
+vim.diagnostic.config({
+  virtual_text = false,
+  float = true
+})
+
