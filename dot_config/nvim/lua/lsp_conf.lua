@@ -1,28 +1,43 @@
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+    { noremap = true, silent = true, buffer = bufnr, desc = "get information about symbol" })
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
+    { noremap = true, silent = true, buffer = bufnr, desc = "get signature help" })
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to declaration" })
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to definition" })
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to impletementation" })
+  vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
+    { noremap = true, silent = true, buffer = bufnr, desc = "add folder in workspace" })
+  vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
+    { noremap = true, silent = true, buffer = bufnr, desc = "remove folder in workspace" })
   vim.keymap.set('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, opts)
+  end, { noremap = true, silent = true, buffer = bufnr, desc = "list folders in workspace" })
+  vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to type definition" })
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,
+    { noremap = true, silent = true, buffer = bufnr, desc = "rename symbol" })
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
+    { noremap = true, silent = true, buffer = bufnr, desc = "get code action" })
+  vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to reference" })
+  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float,
+    { noremap = true, silent = true, buffer = bufnr, desc = "open diagnostic window" })
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to previous diagnostic" })
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next,
+    { noremap = true, silent = true, buffer = bufnr, desc = "go to next diagnostic" })
+  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist,
+    { noremap = true, silent = true, buffer = bufnr, desc = "open diagnostic list" })
 
 
 end
@@ -78,19 +93,41 @@ cmp.setup({
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require('lspconfig').eslint.setup{
+require('lspconfig').eslint.setup {
   on_attach = on_attach,
-  flags = lsp_flags,
   capabilities = capabilities,
 }
 
-require('lspconfig').rls.setup{
+require('lspconfig').rls.setup {
   on_attach = on_attach,
-  flags = lsp_flags,
   capabilities = capabilities,
   settings = {
     rust = {
       all_features = false,
+    },
+  },
+}
+
+require 'lspconfig'.sumneko_lua.setup {
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
     },
   },
 }

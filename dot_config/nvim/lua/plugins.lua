@@ -3,12 +3,18 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
+  use { "catppuccin/nvim", as = "catppuccin" }
   use {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
       end
+  }
+
+  use {
+    "akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+      require("toggleterm").setup()
+    end
   }
 
   use {
@@ -36,6 +42,18 @@ return require('packer').startup(function(use)
   --
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+
+  use {'lewis6991/gitsigns.nvim', requires={'nvim-lua/plenary.nvim'}}
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
 end)
 
