@@ -86,6 +86,7 @@ cmp.setup({
     { name = 'vsnip' }, -- For vsnip users.
   }, {
     { name = 'buffer' },
+    { name = 'path' },
   })
 })
 
@@ -98,12 +99,22 @@ require('lspconfig').eslint.setup {
   capabilities = capabilities,
 }
 
-require('lspconfig').rls.setup {
+require 'lspconfig'.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
-    rust = {
-      all_features = false,
+    ["rust_analyzer"] = {
+      completion = {
+        callable = {
+          snippets = "none",
+        },
+        autoimport = {
+          enable = true,
+        },
+        autoself = {
+          enable = true,
+        },
+      },
     },
   },
 }

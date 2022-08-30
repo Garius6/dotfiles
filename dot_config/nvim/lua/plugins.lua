@@ -1,16 +1,26 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-  use { "catppuccin/nvim", as = "catppuccin" }
+  -- Using Packer
+  use 'navarasu/onedark.nvim'
   use {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
   }
-
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
   use {
     "akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
       require("toggleterm").setup()
@@ -18,15 +28,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-      'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
   }
 
   use 'neovim/nvim-lspconfig'
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
   use {
@@ -42,8 +52,8 @@ return require('packer').startup(function(use)
   --
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
-
-  use {'lewis6991/gitsigns.nvim', requires={'nvim-lua/plenary.nvim'}}
+  use 'mfussenegger/nvim-dap'
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   use {
     "folke/which-key.nvim",
     config = function()
@@ -56,6 +66,3 @@ return require('packer').startup(function(use)
   }
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
 end)
-
-
-

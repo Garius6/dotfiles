@@ -4,6 +4,8 @@ require('plugins')
 require('lsp_conf')
 require('telescope_conf')
 require('statusline_conf')
+require('dap_conf')
+require("bufferline").setup {}
 
 require 'nvim-treesitter.configs'.setup {
   indent = { enable = true },
@@ -12,6 +14,11 @@ require 'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+require('onedark').setup {
+  style = 'deep'
+}
+require('onedark').load()
 
 vim.keymap.set('t', '<ESC>', '<C-\\><C-n>', { desc = "return terminal to normal mode" })
 
@@ -27,7 +34,7 @@ vim.keymap.set('n', '<leader>bl', ':buffers<CR>', { desc = "print buffers list" 
 
 vim.keymap.set('n', '<leader>T', ':ToggleTerm<CR>', { desc = "toggle terminal" })
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 
 vim.opt.autoindent = true
 vim.opt.tabstop = 2
@@ -40,6 +47,8 @@ vim.opt.smartindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.breakindent = true
+vim.opt.wrap = false
+vim.opt.cb = "unnamed"
 
 vim.diagnostic.config({
   virtual_text = false,
@@ -54,12 +63,6 @@ require('gitsigns').setup {
     changedelete = { text = '~' },
   }
 }
-
-vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
-
-require("catppuccin").setup({
-  transparent_background = true,
-})
 
 local function _gitui_toggle()
   local Terminal = require('toggleterm.terminal').Terminal
@@ -79,5 +82,3 @@ local function _gitui_toggle()
 end
 
 vim.keymap.set("n", "<leader>Ta", _gitui_toggle, { desc = "open gitui" })
-
-vim.cmd [[colorscheme catppuccin]]
