@@ -10,15 +10,10 @@ require('plugins/bufferline')
 require('plugins/nvim_tree')
 require('plugins/treesitter')
 require('plugins/gitsigns')
+require('plugins/hop')
 require('keybindings')
 
 require('onedark').setup {
   style = 'deep'
 }
 require('onedark').load()
-
-
-vim.diagnostic.config({
-  virtual_text = false,
-  float = true
-})

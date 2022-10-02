@@ -13,15 +13,6 @@ return require('packer').startup(function(use)
     end
   }
   use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
-  use({
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
-  })
   use {
     "akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
       require("toggleterm").setup()
@@ -50,11 +41,13 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/nvim-cmp'
-  --
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+
   use 'mfussenegger/nvim-dap'
+
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
   use {
     "folke/which-key.nvim",
     config = function()
@@ -62,5 +55,13 @@ return require('packer').startup(function(use)
     end
   }
 
-  vim.opt.completeopt = { "menu", "menuone", "noselect" }
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
+  use "rafamadriz/friendly-snippets"
 end)
