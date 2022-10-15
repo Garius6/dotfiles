@@ -1,7 +1,9 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 require('settings')
 require('plugins_list')
+require('plugins/conjure')
 require('plugins/lsp')
 require('plugins/telescope')
 require('plugins/statusline')

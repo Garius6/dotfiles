@@ -12,6 +12,8 @@ vim.opt.breakindent = false
 vim.opt.wrap = false
 vim.opt.cb = "unnamed"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.diagnostic.config({
   virtual_text = false,
   float = true
