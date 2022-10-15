@@ -10,8 +10,9 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-PATH=$PATH:$(go env GOPATH)/bin
 PATH=$PATH:$HOME/.local/share/coursier/bin
+PATH=$PATH:$HOME/.emacs.d/bin
+PATH=$PATH:$HOME/flutter/flutter/bin
 
 export PATH
 
