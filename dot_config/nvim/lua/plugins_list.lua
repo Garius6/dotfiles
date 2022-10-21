@@ -66,4 +66,7 @@ return require('packer').startup(function(use)
   use "rafamadriz/friendly-snippets"
   use 'Olical/conjure'
   use { "ellisonleao/gruvbox.nvim" }
+  use {
+      "williamboman/nvim-lsp-installer",
+  }
 end)
