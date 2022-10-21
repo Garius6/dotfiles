@@ -15,8 +15,5 @@ require('plugins/gitsigns')
 require('plugins/hop')
 require('keybindings')
 
-require('onedark').setup {
-  style = 'deep'
-}
+require('plugins/')
 
-require('onedark').load()
