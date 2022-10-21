@@ -15,5 +15,5 @@ require('plugins/gitsigns')
 require('plugins/hop')
 require('keybindings')
 
-require('plugins/')
+require('plugins/gruvbox')
 
