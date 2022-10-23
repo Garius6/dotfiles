@@ -97,7 +97,7 @@ cmp.setup({
 })
 
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities (vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require 'lspconfig'.rust_analyzer.setup {
@@ -177,7 +177,8 @@ require 'lspconfig'.clojure_lsp.setup {
   on_attach = on_attach,
 }
 
-require'lspconfig'.html.setup {
+require 'lspconfig'.html.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+  filetypes = { "htmldjango", "html" }
 }
