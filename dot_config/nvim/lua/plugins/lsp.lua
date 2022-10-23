@@ -176,3 +176,8 @@ require 'lspconfig'.clojure_lsp.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
+
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
