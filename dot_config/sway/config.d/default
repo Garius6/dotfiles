@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Your preferred terminal emulators
-set $term-float footclient
+set $term-float foot
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
