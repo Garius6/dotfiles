@@ -8,6 +8,7 @@ set $term-float foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu rofi -show drun
+set $window-switcher "python3 ~/.config/sway/scripts/change_window.py"
 
 set $powermenu ~/.config/waybar/scripts/power-menu.sh
 
@@ -39,7 +40,10 @@ exec swayidle -w\
 
     # Start your launcher
     bindsym $mod+d exec $menu
-    
+
+    # Start windows swither 
+    bindsym $mod+w exec $window-switcher
+
     # Activities
     bindsym $mod+p exec ~/.config/wofi/windows.py
 
