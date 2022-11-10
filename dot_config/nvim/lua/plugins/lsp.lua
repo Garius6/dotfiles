@@ -183,17 +183,7 @@ require 'lspconfig'.html.setup {
   filetypes = { "htmldjango", "html" }
 }
 
-require'lspconfig'.pylsp.setup{
+require'lspconfig'.pyright.setup{
   on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {'W391'},
-          maxLineLength = 100
-        }
-      }
-    }
-  }
+  capabilities = capabilities
 }
