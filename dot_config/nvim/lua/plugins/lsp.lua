@@ -182,3 +182,18 @@ require 'lspconfig'.html.setup {
   on_attach = on_attach,
   filetypes = { "htmldjango", "html" }
 }
+
+require'lspconfig'.pylsp.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
