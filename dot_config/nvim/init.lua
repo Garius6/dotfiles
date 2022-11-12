@@ -17,3 +17,4 @@ require('keybindings')
 
 require('plugins/gruvbox')
 
+require('Comment').setup()
