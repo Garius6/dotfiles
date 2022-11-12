@@ -3,6 +3,10 @@ vim.g.maplocalleader = ' '
 
 require('settings')
 require('plugins_list')
+
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 require('plugins/conjure')
 require('plugins/lsp')
 require('plugins/telescope')
