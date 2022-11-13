@@ -11,6 +11,7 @@ vim.keymap.set('n', '<leader>T', ':ToggleTerm<CR>', { desc = "toggle terminal" }
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = "go to next buffer" })
 vim.keymap.set('n', '<leader>bb', ':bprevious<CR>', { desc = "go to previous buffer" })
 vim.keymap.set('n', '<leader>bl', ':buffers<CR>', { desc = "print buffers list" })
+vim.keymap.set('n', '<leader>bk', ':bdelete<CR>', { desc = "kill buffer" })
 
 -- Telescope
 wk.register({
