@@ -9,13 +9,13 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>',
     { noremap = true, silent = true, buffer = bufnr, desc = "get information about symbol" })
 
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga lsp_finder<CR>',
     { noremap = true, silent = true, buffer = bufnr, desc = "get information about symbol" })
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help,
     { noremap = true, silent = true, buffer = bufnr, desc = "get signature help" })
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
     { noremap = true, silent = true, buffer = bufnr, desc = "go to declaration" })
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+  vim.keymap.set('n', 'gd', "<cmd>Lspsaga peek_definition<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "go to definition" })
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
     { noremap = true, silent = true, buffer = bufnr, desc = "go to impletementation" })
@@ -28,17 +28,17 @@ local on_attach = function(_, bufnr)
   end, { noremap = true, silent = true, buffer = bufnr, desc = "list folders in workspace" })
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition,
     { noremap = true, silent = true, buffer = bufnr, desc = "go to type definition" })
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,
+  vim.keymap.set('n', '<leader>rn', "<cmd>Lspsaga rename<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "rename symbol" })
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
+  vim.keymap.set('n', '<leader>ca', "<cmd>Lspsaga code_action<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "get code action" })
   vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references,
     { noremap = true, silent = true, buffer = bufnr, desc = "go to reference" })
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float,
+  vim.keymap.set('n', '<leader>e', "<cmd>Lspsaga show_line_diagnostics<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "open diagnostic window" })
-  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,
+  vim.keymap.set('n', '[d', "<cmd>Lspsaga diagnostic_jump_prev<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "go to previous diagnostic" })
-  vim.keymap.set('n', ']d', vim.diagnostic.goto_next,
+  vim.keymap.set('n', ']d', "<cmd>Lspsaga diagnostic_jump_next<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "go to next diagnostic" })
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist,
     { noremap = true, silent = true, buffer = bufnr, desc = "open diagnostic list" })
@@ -142,39 +142,6 @@ require 'lspconfig'.sumneko_lua.setup {
       },
     },
   },
-}
-
-
-require("flutter-tools").setup {
-  lsp = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-      showTodos = true,
-      completeFunctionCalls = true,
-      enableSnippets = true,
-    }
-  }
-}
-
-require 'lspconfig'.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-require 'lspconfig'.ocamllsp.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.tsserver.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
-require 'lspconfig'.clojure_lsp.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
 }
 
 require 'lspconfig'.html.setup {

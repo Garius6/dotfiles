@@ -67,4 +67,7 @@ return require('packer').startup(function(use)
   use 'Olical/conjure'
   use { "ellisonleao/gruvbox.nvim" }
   use { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" }
+  use { "glepnir/lspsaga.nvim", branch = "main"}
+  use { "jose-elias-alvarez/null-ls.nvim" } -- configure formatters & linters
+  use { "jayp0521/mason-null-ls.nvim" }
 end)
